@@ -23,7 +23,6 @@ app.get("/", function(req, res) {
     const units = "metric";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}&units=${units}`;
 
-    // console.log(temp);
 
     https.get(url, function(response){
         console.log(response.statusCode);
