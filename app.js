@@ -16,6 +16,7 @@ let icon = "";
 let description = "";
 let humidity = "";
 let speed = "";
+let imgUrl = "";
 app.get("/", function(req, res) {
     const apiKey = process.env.API_KEY;
     const units = "metric";
@@ -37,7 +38,7 @@ app.get("/", function(req, res) {
             // res.write(`<h2>The current weather is ${description}</h2>`);
             // res.write(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`);
             // res.send();
-            const imgUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+             imgUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
             res.render('index', {temp: temp, description: description, icon: imgUrl, query: query, speed: speed, humidity: humidity, main: main});
             
         });
