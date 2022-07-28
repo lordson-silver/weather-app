@@ -17,10 +17,11 @@ let description = "";
 let humidity = "";
 let speed = "";
 let imgUrl = "";
-const apiKey = process.env.API_KEY;
-const units = "metric";
-const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}&units=${units}`;
+
 app.get("/", function(req, res) {
+    const apiKey = process.env.API_KEY;
+    const units = "metric";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}&units=${units}`;
 
     // console.log(temp);
 
