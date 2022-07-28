@@ -17,10 +17,12 @@ let description = "";
 let humidity = "";
 let speed = "";
 let imgUrl = "";
+const apiKey = process.env.API_KEY;
+const units = "metric";
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}&units=${units}`;
 app.get("/", function(req, res) {
-    const apiKey = process.env.API_KEY;
-    const units = "metric";
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}&units=${units}`;
+
+    // console.log(temp);
 
     https.get(url, function(response){
         console.log(response.statusCode);
@@ -28,7 +30,7 @@ app.get("/", function(req, res) {
         response.on("data", function(data){
             const weatherData = JSON.parse(data);
              temp = weatherData.main.temp;
-            
+            //  console.log(temp);
              description = weatherData.weather[0].description;
              icon = weatherData.weather[0].icon;
              speed = weatherData.wind.speed;
