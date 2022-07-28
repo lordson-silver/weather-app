@@ -26,6 +26,8 @@ This project includes:
 2. run `npm install`
 3. run `node app.js`
 4. *server should be running on port 5050* you can change it if you like in the app.js file
+5. If you don't have node installed check [Node official website](https://nodejs.org/en/) to download 
+6. Repeat steps 2 through 4
 
 ***
 
