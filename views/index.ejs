@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <!-- <main>
+    <form action="/" method="post">
+        <label for="city">What city?</label>
+        <input type="text" id="city" name="cityName">
+        <button type="submit">Go</button>
+    </form>
+    </main>
+    <section>
+        <h3 class="temp"><%= temp%></h3>
+        <h3>The Current Temperature is <span><%= temp %> </span> degrees.</h3>
+        <h3>The current weather is <span> <%= description %> </span></h3>
+        <img src="<%= icon %>" alt="">
+    </section> -->
+    <div class="container">
+        <div class="column weather-side">
+            <div class="weather-gradient"></div>
+            <div class="date-container">
+                <h2 class="date-dayname">Tuesday</h2>
+                <h2 class="date-day"><span id="date-day">28</span> <span id="date-month">July</span> <span id="date-year">2022</span></h2>
+                <i class="location-icon" data-feather="map-pin"></i><span class="location"><%= query %> </span>
+                
+            </div>
+            <div class="weather-container">
+                <img class="weather-icon" src="<%= icon %>" alt="">
+                <!-- <i class="weather-icon" data-feather="sun"></i> -->
+                <h1 class="weather-temp"><%= temp %>℃</h1>
+                <h3 class="weather-desc"><%= description %></h3>
+            </div>
+        </div>
+        <div class="column info-side">
+            <div class="info-container">
+                <div class="today-info">
+                    <div class="precipitation">
+                        <h3>Weather</h3>
+                        <h2><%= main %></h2>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="humidity">
+                        <h3>Humidity</h3>
+                        <h2><%= humidity %>%</h2>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="wind">
+                        <h3>Wind</h3>
+                        <h2><%= speed %> km/h</h2>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="location-container">
+
+                
+                <form action="/" method="post">
+                    <label class="input-field">
+                        <input type="text" name="cityName">
+                    </label>
+                    <button class="location-button" type="submit"><i class="location-icon" data-feather="map-pin"></i><span>Change Location</span></button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        const date = new Date();
+        const day = date.getDay();
+        const dayName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const month = date.getMonth();
+        const monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const dayNumber = date.getDate();
+        const year = date.getFullYear();
+
+        let dayNameEl = document.querySelector('.date-dayname');
+        let dayEl = document.querySelector('#date-day');
+        let monthEl = document.querySelector('#date-month');
+        let yearEl = document.querySelector('#date-year');
+
+        dayNameEl.innerHTML = dayName[day];
+        dayEl.innerHTML = dayNumber;
+        monthEl.innerHTML = monthName[month];
+        yearEl.innerHTML = year;
+        feather.replace()
+    </script>
+</body>
+</html>

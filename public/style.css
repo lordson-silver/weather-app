@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
+
+:root {
+	--gradient: linear-gradient( 135deg, #72EDF2 10%, #5151E5 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.2em;
+}
+
+.clear {
+    clear: both;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #343d4b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    border-radius: 25px;
+    box-shadow:  0 0 50px -10px rgba(0, 0, 0, 0.2);
+    background-color: #222831;
+    color: #f7f7f7;
+    width: 40em;
+    height: 400px;
+    /* display: flex;
+    flex-wrap: wrap; */
+}
+
+.container:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.column {
+    float: left;
+}
+.weather-side {
+    position: relative;
+    height: 100%;
+    border-radius: 25px;
+    background-image: url('https://images.unsplash.com/photo-1592601250984-da0dc45e25f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80');
+    width: 40%;
+    box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
+    transition: transform 300ms ease;
+    transform: translateZ(0) scale(1.02) perspective(1000px);
+    
+}
+
+.weather-side:hover {
+    transform: translateZ(0) scale(1.05) perspective(1000px);
+}
+
+.weather-gradient {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-image: var(--gradient);
+	border-radius: 25px;
+	opacity: 0.8;
+}
+
+.date-container {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+.date-dayname {
+    margin: 0;
+}
+
+.date-day {
+    display: block;
+}
+
+.location {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.location-icon {
+    display: inline-block;
+    height: 0.8em;
+    width: auto;
+    margin-right: 5px;
+}
+
+.weather-container {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+}
+
+.weather-icon{
+    /* position: absolute; */
+    height: 100px;
+    width: auto;
+    /* right: 10px; */
+}
+
+.weather-temp {
+    margin: 0;
+    font-weight: 700;
+    font-size: 4em;
+}
+
+.weather-desc {
+    margin: 0;
+}
+
+.info-side {
+	position: relative;
+    width: 60%;
+	height: 100%;
+	padding-top: 25px;
+}
+
+.today-info {
+	padding: 15px;
+	margin: 0 25px 25px 25px;
+	box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+}
+
+.today-info>div:not(:last-child) {
+	margin: 0 0 10px 0;
+}
+
+.today-info>div .title {
+	float: left;
+	font-weight: 700;
+}
+
+.today-info>div .value {
+	float: right;
+}
+
+.location-container {
+	padding: 25px 35px;
+}
+
+.input-field {
+    font-size: 14px;
+    position: relative;
+    --field-padding: 8px;
+}
+
+.input-field input {
+    border: none;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #f7f7f7;
+    background: transparent;
+    color: #f7f7f7;
+    font-size: 1.2em;
+    padding: var(--field-padding);
+    width: 100%;
+    outline: none;
+    transition: all 300ms ease;
+}
+
+
+.location-button {
+	outline: none;
+	width: 100%;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 25px;
+	padding: 10px;
+	font-family: 'Montserrat', sans-serif;
+	background-image: var(--gradient);
+	color: #ffffff;
+	font-weight: 700;
+	box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+	transition: transform 200ms ease;
+}
+
+.location-button:hover {
+	transform: scale(0.95);
+}
+
+.location-button .feather {
+	height: 1em;
+	width: auto;
+	margin-right: 5px;
+}
+
+
+/* .temp{
+    font-size: 3em;
+    color:#f7f7f7;
+    text-align: center;
+} */
+
+@media screen and (min-width: 750px) {
+    .weather-temp {
+        font-size: 3em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        justify-content: center;
+        align-items: inherit;
+    }
+    .column {
+        width: 100%;
+    }
+    .container {
+        width: 80%;
+        height: 300px;
+        margin-top: 30px;
+    }
+    .weather-icon{
+        height: 60px;
+    }
+    .today-info {
+        margin: 0 25px;
+    }
+    .location-container{
+        padding: 5x 15px;
+    }
+}
