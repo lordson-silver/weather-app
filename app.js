@@ -2,6 +2,25 @@ const express = require("express");
 const https = require("https");
 const bodyParser = require("body-parser");
 require("dotenv").config();
+const { EventEmitter } = require("events");
+
+const timerEventEmitter = new EventEmitter();
+
+timerEventEmitter.emit("update");
+
+let currentTime = 0;
+
+setInterval(() => {
+    currentTime++;
+    timerEventEmitter.emit("update", currentTime);
+}, 1000);
+
+timerEventEmitter.on("update", (time) => {
+    console.log(`Time: ${time}`);
+});
+// timerEventEmitter.once("update", (time) => {
+//     console.log(`Time: ${time}`);
+// });
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +37,9 @@ let humidity = "";
 let speed = "";
 let imgUrl = "";
 
+
 app.get("/", function(req, res) {
+    const queryKey = process.env.QUERY_KEY;
     const apiKey = process.env.API_KEY;
     const units = "metric";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}&units=${units}`;
@@ -41,7 +62,8 @@ app.get("/", function(req, res) {
             // res.write(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`);
             // res.send();
              imgUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-            res.render('index', {temp: temp, description: description, icon: imgUrl, query: query, speed: speed, humidity: humidity, main: main});
+             apiUrl = queryKey;
+             res.render('index', {temp: temp, description: description, icon: imgUrl, query: query, speed: speed, humidity: humidity, main: main, apiUrl: apiUrl});
             
         });
         // response.end("ok");  end of response

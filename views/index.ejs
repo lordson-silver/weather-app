@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Lordson Silver">
+    <meta name="description" content="A simple weather app that uses the openweather api to get current weather data.">
+    <meta name="keywords" content="weather, openweather, api, current, weather, current weather, weather app, weather api">
     <link rel="stylesheet" href="/style.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBRo5M6vOQfw_IZHPOUIb5l5S7gLMoLX-k"></script>
+    
     <title>Weather App</title>
+
 </head>
 <body>
-    <!-- <main>
-    <form action="/" method="post">
-        <label for="city">What city?</label>
-        <input type="text" id="city" name="cityName">
-        <button type="submit">Go</button>
-    </form>
-    </main>
-    <section>
-        <h3 class="temp"><%= temp%></h3>
-        <h3>The Current Temperature is <span><%= temp %> </span> degrees.</h3>
-        <h3>The current weather is <span> <%= description %> </span></h3>
-        <img src="<%= icon %>" alt="">
-    </section> -->
+    
     <div class="container">
         <div class="column weather-side">
             <div class="weather-gradient"></div>
@@ -61,7 +57,7 @@
                 
                 <form action="/" method="post">
                     <label class="input-field">
-                        <input type="text" name="cityName">
+                        <input id="search-input" type="text" name="cityName">
                     </label>
                     <button class="location-button" type="submit"><i class="location-icon" data-feather="map-pin"></i><span>Change Location</span></button>
                 </form>
@@ -69,6 +65,11 @@
             </div>
         </div>
     </div>
+
+    <!-- set google auto-complete api link with api key -->
+    <!-- <script src=""></script> -->
+
+
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
         const date = new Date();
@@ -89,6 +90,33 @@
         monthEl.innerHTML = monthName[month];
         yearEl.innerHTML = year;
         feather.replace()
+
+        var searchInput = "search-input";	// input field id
+ 
+        document.addEventListener('DOMContentLoaded', function () { 
+            var autocomplete;  // autocomplete object
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+             types: ['geocode'],
+  /*componentRestrictions: {
+   country: "USA"
+  }*/
+            });
+            // google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            //     var place = autocomplete.getPlace();
+            //     var city = place.name;
+            //     var lat = place.geometry.location.lat();
+            //     var lng = place.geometry.location.lng();
+            //     window.location.href = "/?city=" + city;
+            // });
+        });
+  
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                let near_place = autocomplete.getPlace(); // getPlace() returns object with place data
+                
+
+
+
+            });
     </script>
 </body>
 </html>
