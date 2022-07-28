@@ -11,7 +11,6 @@ app.use(express.static("public"));
 
 let query = "Paris";
 app.get("/", function(req, res) {
-    
     const apiKey = process.env.API_KEY;
     const units = "metric";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}&units=${units}`;
@@ -37,11 +36,6 @@ app.get("/", function(req, res) {
             
         });
     });
-});
-
-app.post("/", function(req, res) {
-
-   query = req.body.cityName;
 
 //    res.sendFile(__dirname + "/public/index.ejs");
 // res.render('index', {temp: ''})
