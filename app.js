@@ -44,6 +44,7 @@ app.get("/", function(req, res) {
             res.render('index', {temp: temp, description: description, icon: imgUrl, query: query, speed: speed, humidity: humidity, main: main});
             
         });
+        response.end("ok"); // end of response
     });
 
 //    res.sendFile(__dirname + "/public/index.ejs");
