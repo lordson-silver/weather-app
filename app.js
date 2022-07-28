@@ -10,6 +10,12 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 let query = "Paris";
+let temp = "";
+let main = "";
+let icon = "";
+let description = "";
+let humidity = "";
+let speed = "";
 app.get("/", function(req, res) {
     const apiKey = process.env.API_KEY;
     const units = "metric";
@@ -20,13 +26,13 @@ app.get("/", function(req, res) {
 
         response.on("data", function(data){
             const weatherData = JSON.parse(data);
-            const temp = weatherData.main.temp;
+             temp = weatherData.main.temp;
             
-            const description = weatherData.weather[0].description;
-            const icon = weatherData.weather[0].icon;
-            const speed = weatherData.wind.speed;
-            const humidity = weatherData.main.humidity;
-            const main = weatherData.weather[0].main;
+             description = weatherData.weather[0].description;
+             icon = weatherData.weather[0].icon;
+             speed = weatherData.wind.speed;
+             humidity = weatherData.main.humidity;
+             main = weatherData.weather[0].main;
             // res.write(`<h1>The current temperature in ${query} is ${temp} degrees</h1>`);
             // res.write(`<h2>The current weather is ${description}</h2>`);
             // res.write(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`);
